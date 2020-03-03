@@ -1,0 +1,11 @@
+@import 'theme';
+@import 'fonts';
+/* Permet de cible la balise qui porte le component ici app-header */
+:host {
+  width: 100%;
+}
+p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: $color3;
+}

@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { PageLoginComponent } from './login/pages/page-login/page-login.component';
 
 
-const routes: Routes = [];
+const appRoutes: Routes = [
+  {path: 'login', component: PageLoginComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full' }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes, {enableTracing: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
