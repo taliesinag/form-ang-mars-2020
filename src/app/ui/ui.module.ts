@@ -14,6 +14,6 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     RouterModule
   ],
-  exports: [UiComponent]
+  exports: [UiComponent, HeaderComponent, FooterComponent, NavComponent]
 })
 export class UiModule { }
