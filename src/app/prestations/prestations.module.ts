@@ -9,7 +9,7 @@ import { PagePrestationsComponent } from './pages/page-prestations/page-prestati
   declarations: [PagePrestationsComponent],
   imports: [
     CommonModule,
-    PrestationsRoutingModule
+    PrestationsRoutingModule,
   ]
 })
 export class PrestationsModule { }
