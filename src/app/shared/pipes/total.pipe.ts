@@ -6,11 +6,14 @@ import { Prestation } from '../models/prestation';
 })
 export class TotalPipe implements PipeTransform {
 // ... spread operator pour desctructurer un tableau
-  transform(value: any, ...args: string[]): unknown {
-    if (value) {
-      return value[args[0]]();
+  transform(value: any, args: any): unknown {
+    if (value ) {
+      if( args ) {
+        return value.totalTtc();
+      }
+      return value.totalHt();
     }
-    return 'ERROR';
+    return null ;
   }
   // Exemple du spread opérator
   // let f = ['fraise', 'banane'];

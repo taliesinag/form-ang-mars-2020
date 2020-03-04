@@ -28,9 +28,15 @@
         <td>{{ prestation.nbJours }}</td>
         <td>{{ prestation.tjmHt | currency : 'EUR' }}</td>
         <!-- Ne jamais passer de fonction au html, préférer les pipes -->
-        <td>{{ prestation | total : 'totalHt' | currency : 'EUR' }}</td>
-        <td>{{ prestation | total : 'totalTtc' | currency : 'EUR' }}</td>
-        <td>{{ prestation.state }}</td>
+        <td>{{ prestation | total | currency : 'EUR' }}</td>
+        <td>{{ prestation | total : 'anyArgsToActivateTtc' | currency : 'EUR' }}</td>
+        <!-- <td>{{ prestation | doFunction : 'totalHt' | currency : 'EUR' }}</td>
+        <td>{{ prestation | doFunction : 'totalTtc' | currency : 'EUR' }}</td> -->
+        <td>
+          <select (change)="changeState($event, prestation)">
+            <option *ngFor="let state of states" [value]="state" [selected]="state === prestation.state">{{ state }}</option>
+          </select>
+        </td>
       </tr>
     </tbody>
   </table>
