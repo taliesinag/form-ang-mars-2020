@@ -18,7 +18,7 @@ export class PagePrestationsComponent implements OnInit {
   public tableHeaders: string[];
   constructor(
     private prestationsService: PrestationsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.collection$ = this.prestationsService.collection;

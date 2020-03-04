@@ -32,7 +32,7 @@
         <td>{{ prestation | total : 'anyArgsToActivateTtc' | currency : 'EUR' }}</td>
         <!-- <td>{{ prestation | doFunction : 'totalHt' | currency : 'EUR' }}</td>
         <td>{{ prestation | doFunction : 'totalTtc' | currency : 'EUR' }}</td> -->
-        <td>
+        <td [appState]="prestation.state">
           <select (change)="changeState($event, prestation)">
             <option *ngFor="let state of states" [value]="state" [selected]="state === prestation.state">{{ state }}</option>
           </select>

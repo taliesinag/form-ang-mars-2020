@@ -6,7 +6,7 @@ import { Prestation } from '../models/prestation';
 })
 export class TotalPipe implements PipeTransform {
 // ... spread operator pour desctructurer un tableau
-  transform(value: any, args: any): unknown {
+  transform(value: any, args?: any): unknown {
     if (value ) {
       if( args ) {
         return value.totalTtc();
