@@ -2,17 +2,14 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Client</th>
-        <th scope="col">NBJours</th>
-        <th scope="col">TjmHT</th>
-        <th scope="col">Total HT</th>
-        <th scope="col">Total TTC</th>
-        <th scope="col">State</th>
+        <th *ngFor="let header of tableHeaders" scope="col">{{ header }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let prestation of collection">
+      <!-- Enchaine les lifecycle ngOnInit() pôur le premier obj de la collection
+      puis pour chaque obj suivant ngDoCheck() tous ces appels de lifecycle vont être
+      répercuté sur tous les components de la page affichés. -->
+      <!-- <tr *ngFor="let prestation of collection">
         <td>{{prestation.typePresta}}</td>
         <td>{{prestation.client}}</td>
         <td>{{prestation.nbJours}}</td>
@@ -20,6 +17,20 @@
         <td>{{prestation.totalHt()}}</td>
         <td>{{prestation.totalTtc()}}</td>
         <td>{{prestation.state}}</td>
+      </tr> -->
+
+      <!-- Du coup on utilise le pipe async qui va nous retourner le flux de données, fait le subscribe() et le unsubscribe()
+        ce qui va permettre de limiter le changes detection -->
+      <tr *ngFor="let prestation of collection$ | async as collection">
+        <!-- <td>{{ collection | json }}</td> -->
+        <td>{{ prestation.typePresta }}</td>
+        <td>{{ prestation.client }}</td>
+        <td>{{ prestation.nbJours }}</td>
+        <td>{{ prestation.tjmHt | currency : 'EUR' }}</td>
+        <!-- Ne jamais passer de fonction au html, préférer les pipes -->
+        <td>{{ prestation | total : 'totalHt' | currency : 'EUR' }}</td>
+        <td>{{ prestation | total : 'totalTtc' | currency : 'EUR' }}</td>
+        <td>{{ prestation.state }}</td>
       </tr>
     </tbody>
   </table>

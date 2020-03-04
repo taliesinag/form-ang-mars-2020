@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PrestationsService {
-  private pCollection: Observable<Prestation[]>;
+  private pCollection$: Observable<Prestation[]>;
   constructor(
     private http: HttpClient
   ) {
@@ -20,11 +20,11 @@ export class PrestationsService {
 
   // get collection
   public get collection(): Observable<Prestation[]> {
-    return this.pCollection;
+    return this.pCollection$;
   }
   // set collection
   public set collection(collection: Observable<Prestation[]>) {
-    this.pCollection = collection;
+    this.pCollection$ = collection;
   }
   // add item in collection
 
