@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrestationsService } from '../../services/prestations.service';
-import { Prestation } from 'src/app/shared/models/prestation';
+import { Prestation } from 'src/app/shared/models/prestation.model';
 import { Observable } from 'rxjs';
 import { State } from 'src/app/shared/enums/state.enum';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +10,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './page-prestations.component.html',
   styleUrls: ['./page-prestations.component.scss']
 })
+/**
+ * Un page doit servir de container et porté la logique de la page.
+ * Elle va contenir que des petits composants d'affichage qui ne porte aucune logique.
+ */
 export class PagePrestationsComponent implements OnInit {
   // Fonction values() de Object permet de récupérer un tableau des valeurs de l'objet passer en params
   // La fonction keys() permet de retourner un tableau comportant le nom des attributs de l'object.

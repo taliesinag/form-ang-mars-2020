@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Prestation } from '../models/prestation';
 
 @Pipe({
   name: 'total'

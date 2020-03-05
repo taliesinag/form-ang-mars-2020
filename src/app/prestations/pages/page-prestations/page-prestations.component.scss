@@ -1,11 +1,21 @@
-@import 'theme';
+// p { background-color: red;}
+// p { background-color: blue;}
 
-.state-option {
-  background-color: $color2;
-}
-.state-annule {
-  background-color: $color-error;
-}
-.state-confirme {
-  background-color: $color-success;
-}
+// .orange { background-color: orange;}
+// // selecteur d'attribut
+// [class="orange"] {
+//   background-color: red($color: #000000);
+// }
+
+// //pseudo-selecteur
+// div p:nth-child(3) {
+//   background-color: green ;
+// }
+// Priorité des selecteurs
+//selecteur  | !important | style="" | id | pseudo, class, attr | simple
+// p {}            0           0       0            0               1         = 1pts
+// .orange {}      0           0       0            1               0         = 10pts
+// #green          0           0       1            0               0         = 100pts
+// style="" {}     0           1       0            0               0         = 1000pts
+// !important      1           0       0            0               0         = 10000pts
+// div p #green    0           0       1            0               2         = 102pts

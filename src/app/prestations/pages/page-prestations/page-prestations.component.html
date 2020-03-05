@@ -1,12 +1,5 @@
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th *ngFor="let header of tableHeaders" scope="col">{{ header }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Enchaine les lifecycle ngOnInit() pôur le premier obj de la collection
+<app-tableau-dark [tableHeaders]="tableHeaders">
+  <!-- Enchaine les lifecycle ngOnInit() pôur le premier obj de la collection
       puis pour chaque obj suivant ngDoCheck() tous ces appels de lifecycle vont être
       répercuté sur tous les components de la page affichés. -->
       <!-- <tr *ngFor="let prestation of collection">
@@ -21,23 +14,25 @@
 
       <!-- Du coup on utilise le pipe async qui va nous retourner le flux de données, fait le subscribe() et le unsubscribe()
         ce qui va permettre de limiter le changes detection -->
-      <tr *ngFor="let prestation of collection$ | async as collection">
-        <!-- <td>{{ collection | json }}</td> -->
-        <td>{{ prestation.typePresta }}</td>
-        <td>{{ prestation.client }}</td>
-        <td>{{ prestation.nbJours }}</td>
-        <td>{{ prestation.tjmHt | currency : 'EUR' }}</td>
-        <!-- Ne jamais passer de fonction au html, préférer les pipes -->
-        <td>{{ prestation | total | currency : 'EUR' }}</td>
-        <td>{{ prestation | total : 'anyArgsToActivateTtc' | currency : 'EUR' }}</td>
-        <!-- <td>{{ prestation | doFunction : 'totalHt' | currency : 'EUR' }}</td>
-        <td>{{ prestation | doFunction : 'totalTtc' | currency : 'EUR' }}</td> -->
-        <td [appState]="prestation.state">
-          <select (change)="changeState($event, prestation)">
-            <option *ngFor="let state of states" [value]="state" [selected]="state === prestation.state">{{ state }}</option>
-          </select>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <tr *ngFor="let prestation of collection$ | async as collection">
+    <!-- <td>{{ collection | json }}</td> -->
+    <td>{{ prestation.typePresta }}</td>
+    <td>{{ prestation.client }}</td>
+    <td>{{ prestation.nbJours }}</td>
+    <td>{{ prestation.tjmHt | currency : 'EUR' }}</td>
+    <!-- Ne jamais passer de fonction au html, préférer les pipes -->
+    <td>{{ prestation | total | currency : 'EUR' }}</td>
+    <td>{{ prestation | total : 'anyArgsToActivateTtc' | currency : 'EUR' }}</td>
+    <!-- <td>{{ prestation | doFunction : 'totalHt' | currency : 'EUR' }}</td>
+    <td>{{ prestation | doFunction : 'totalTtc' | currency : 'EUR' }}</td> -->
+    <td [appState]="prestation.state">
+      <select (change)="changeState($event, prestation)">
+        <option *ngFor="let state of states" [value]="state" [selected]="state === prestation.state">{{ state }}</option>
+      </select>
+    </td>
+  </tr>
+</app-tableau-dark>
+
+<!-- 
+  
+ -->
