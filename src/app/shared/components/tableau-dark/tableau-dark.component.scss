@@ -5,9 +5,17 @@
     background-color: $color-error;
     }
   .state-option {
-    background-color: $color1;
+    background-color: $color3;
   }
   .state-confirme {
     background-color: $color-success;
   }
+}
+
+app-template-a #table-dark .state-option {
+  background-color: $color2;
+}
+
+app-template-b #table-dark .state-option {
+  background-color: $color1;
 }

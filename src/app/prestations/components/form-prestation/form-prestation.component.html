@@ -1,0 +1,43 @@
+<div class="container">
+  <form [formGroup]="prestationFormGroup">
+
+    <div class="form-group">
+      <label for="typepresta">Type</label>
+      <input type="text" class="form-control" id="typepresta"  [formControlName]="'typePresta'">
+    </div>
+
+    <div class="form-group">
+      <label for="clientpresta">Client</label>
+      <input type="text" class="form-control" id="clientpresta" [formControlName]="'client'">
+    </div>
+
+    <div class="form-group">
+      <label for="tjmht">TJMHt</label>
+      <input type="number" class="form-control" id="tjmht" [formControlName]="'nbJours'">
+    </div>
+
+    <div class="form-group">
+      <label for="nombreJours">NBJours</label>
+      <input type="number" class="form-control" id="nombreJours" [formControlName]="'tjmHt'">
+    </div>
+
+    <div class="form-group">
+      <label for="tva">tva</label>
+      <input type="number" class="form-control" id="tva" [formControlName]="'tva'">
+    </div>
+
+    <div class="form-group">
+      <label for="State">State</label>
+      <select id="State" [formControlName]="'state'">
+        <option  *ngFor="let state of states" [ngValue]="state">{{ state }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="comments">comments</label>
+      <textarea type="text" class="form-control" id="comments" [formControlName]="'comment'"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

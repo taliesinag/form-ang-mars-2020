@@ -11,3 +11,11 @@
     background-color: $color-success;
   }
 }
+
+app-template-a #table-light .state-option {
+  background-color: $color2;
+}
+
+app-template-b #table-light .state-option {
+  background-color: $color1;
+}

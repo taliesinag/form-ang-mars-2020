@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { PageAddPrestationComponent } from './pages/page-add-prestation/page-add-prestation.component';
 import { PagePrestationsComponent } from './pages/page-prestations/page-prestations.component';
 
 
 const routes: Routes = [
-  { path: '', component: PagePrestationsComponent}
+  {
+    path: '',
+    component: PagePrestationsComponent,
+    data: {title: 'Prestations', subTitle: 'Toutes les prestations'}
+  },
+  {
+    path: 'add',
+    component: PageAddPrestationComponent,
+    data: {title: 'Prestations', subTitle: 'Ajouter une prestation'}
+  }
 ];
 
 @NgModule({
