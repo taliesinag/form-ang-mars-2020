@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrestationsService } from '../../services/prestations.service';
 import { Prestation } from 'src/app/shared/models/prestation.model';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { State } from 'src/app/shared/enums/state.enum';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +21,8 @@ export class PagePrestationsComponent implements OnInit {
   public title: string;
   public subTitle: string;
   public states = Object.values(State);
-  public collection$ : Observable<Prestation[]>;
+  // public collection$ : Observable<Prestation[]>;
+  public collection$ = new BehaviorSubject<Prestation[]>(null);
   public tableHeaders: string[];
 
   // Button
@@ -34,11 +35,14 @@ export class PagePrestationsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.collection$ = this.prestationsService.collection;
+    // this.collection$ = this.prestationsService.collection;
     // Exemple : Subscribe()
     // this.prestationsService.collection.subscribe(
     //   (datas) => {this.collection = datas;}
     // );
+    this.prestationsService.collection.subscribe((datas) => {
+      this.collection$.next(datas);
+    })
     this.tableHeaders = [
       'Type',
       'Client',
@@ -46,7 +50,8 @@ export class PagePrestationsComponent implements OnInit {
       'TjmHT',
       'Total HT',
       'Total TTC',
-      'State'
+      'State',
+      'Delete'
     ];
     this.buttonLabel = 'Ajouter une prestation';
     this.route = 'add';
@@ -57,9 +62,18 @@ export class PagePrestationsComponent implements OnInit {
       this.subTitle = datas.subTitle;
     });
   }
-  changeState(event, prestation: Prestation){
+  public changeState(event, prestation: Prestation){
     this.prestationsService.updateState(prestation, event.target.value).subscribe((res: Prestation) => {
       prestation.state = res.state;
+    });
+  }
+  public delete(prestation: Prestation){
+    console.log('delete page prestations');
+    this.prestationsService.delete(prestation).subscribe((res) => {
+      console.log(res);
+      this.prestationsService.collection.subscribe((datas: Prestation[]) => {
+        this.collection$.next(datas);
+      })
     });
   }
 }

@@ -31,6 +31,9 @@
           <option *ngFor="let state of states" [value]="state" [selected]="state === prestation.state">{{ state }}</option>
         </select>
       </td>
+      <td>
+        <app-trash-icon (click)="delete(prestation)"></app-trash-icon>
+      </td>
     </tr>
   </app-tableau-light>
   <app-button [label]="buttonLabel" [route]="route"></app-button>

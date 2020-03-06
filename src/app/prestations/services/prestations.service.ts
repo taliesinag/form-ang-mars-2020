@@ -42,7 +42,10 @@ export class PrestationsService {
     return this.http.patch(`${environment.urlApî}prestations/${item.id}`, item);
   }
   // delete item in collection
-
+  public delete(item: Prestation) {
+    console.log('delete');
+    return this.http.delete(`${environment.urlApî}prestations/${item.id}`);
+  }
   // get item by id from collection
 
 }

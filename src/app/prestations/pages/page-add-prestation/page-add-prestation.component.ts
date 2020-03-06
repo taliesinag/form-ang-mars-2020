@@ -32,8 +32,10 @@ export class PageAddPrestationComponent implements OnInit {
       // this.router.navigate(['prestations']);
       this.router.navigate(['../'], {relativeTo: this.activatedRoute});
     },
-    (error) => {console.log(error); },
-    () => { console.log('complete()')});
+    (error) => {
+      // console.log(error);
+     },
+    () => { console.log('complete()'); });
   }
 
 }
