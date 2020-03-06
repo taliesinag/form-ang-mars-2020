@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { State } from 'src/app/shared/enums/state.enum';
 import { Prestation } from 'src/app/shared/models/prestation.model';
 
@@ -19,14 +19,17 @@ export class FormPrestationComponent implements OnInit {
 
   ngOnInit(): void {
     this.prestationFormGroup = this.formBuilder.group({
-      typePresta: [this.prestation.typePresta],
-      client: [this.prestation.client],
-      tjmHt: [this.prestation.tjmHt],
-      nbJours: [this.prestation.nbJours],
-      tva: [this.prestation.tva],
-      state: [this.prestation.typePresta],
+      typePresta: [this.prestation.typePresta, [Validators.required]],
+      client: [this.prestation.client, [Validators.required]],
+      tjmHt: [this.prestation.tjmHt, [Validators.required, Validators.min(1000)]],
+      nbJours: [this.prestation.nbJours, [Validators.required, Validators.min(1), Validators.max(25)]],
+      tva: [this.prestation.tva, [Validators.required]],
+      state: [this.prestation.typePresta, [Validators.required]],
       comment: [this.prestation.comment]
     });
   }
-
+  public onSubmit() {
+    // console.log(this.prestationFormGroup.value);
+    this.nItem.emit(this.prestationFormGroup.value);
+  }
 }

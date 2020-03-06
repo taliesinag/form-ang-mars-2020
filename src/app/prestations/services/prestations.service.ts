@@ -28,7 +28,9 @@ export class PrestationsService {
     this.pCollection$ = collection;
   }
   // add item in collection
-
+  public add(prestation: Prestation) {
+    return this.http.post(`${environment.urlApî}prestations`, prestation);
+  }
   // update State
   public updateState(prestation: Prestation, state: State) {
     let obj = new Prestation(prestation);

@@ -50,12 +50,12 @@ export class PagePrestationsComponent implements OnInit {
     ];
     this.buttonLabel = 'Ajouter une prestation';
     this.route = 'add';
-    this.externalLink = 'https://www.google.fr'
+    this.externalLink = 'https://www.google.fr';
     this.activatedRoute.data.subscribe((datas) => {
       console.log(datas);
       this.title = datas.title;
       this.subTitle = datas.subTitle;
-    })
+    });
   }
   changeState(event, prestation: Prestation){
     this.prestationsService.updateState(prestation, event.target.value).subscribe((res: Prestation) => {

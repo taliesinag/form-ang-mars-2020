@@ -1,36 +1,42 @@
 <div class="container">
-  <form [formGroup]="prestationFormGroup">
+  <form [formGroup]="prestationFormGroup" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
       <label for="typepresta">Type</label>
       <input type="text" class="form-control" id="typepresta"  [formControlName]="'typePresta'">
+      <div *ngIf="prestationFormGroup.get('typePresta').invalid && prestationFormGroup.get('typePresta').touched" class="alert alert-danger">Champ invalide</div>
     </div>
 
     <div class="form-group">
       <label for="clientpresta">Client</label>
       <input type="text" class="form-control" id="clientpresta" [formControlName]="'client'">
+      <div *ngIf="prestationFormGroup.get('client').invalid && prestationFormGroup.get('client').touched" class="alert alert-danger">Champ invalide</div>
     </div>
 
     <div class="form-group">
       <label for="tjmht">TJMHt</label>
-      <input type="number" class="form-control" id="tjmht" [formControlName]="'nbJours'">
+      <input type="number" class="form-control" id="tjmht" [formControlName]="'tjmHt'">
+      <div *ngIf="prestationFormGroup.get('tjmHt').invalid && prestationFormGroup.get('tjmHt').touched" class="alert alert-danger">Champ invalide</div>
     </div>
 
     <div class="form-group">
       <label for="nombreJours">NBJours</label>
-      <input type="number" class="form-control" id="nombreJours" [formControlName]="'tjmHt'">
+      <input type="number" class="form-control" id="nombreJours" [formControlName]="'nbJours'">
+      <div *ngIf="prestationFormGroup.get('nbJours').invalid && prestationFormGroup.get('nbJours').touched" class="alert alert-danger">Champ invalide</div>
     </div>
 
     <div class="form-group">
       <label for="tva">tva</label>
       <input type="number" class="form-control" id="tva" [formControlName]="'tva'">
+      <div *ngIf="prestationFormGroup.get('tva').invalid && prestationFormGroup.get('tva').touched" class="alert alert-danger">Champ invalide</div>
     </div>
 
     <div class="form-group">
       <label for="State">State</label>
-      <select id="State" [formControlName]="'state'">
+      <select id="State" class="form-control" [formControlName]="'state'">
         <option  *ngFor="let state of states" [ngValue]="state">{{ state }}</option>
       </select>
+      <div *ngIf="prestationFormGroup.get('state').invalid && prestationFormGroup.get('state').touched" class="alert alert-danger">Champ invalide</div>
     </div>
 
     <div class="form-group">
@@ -38,6 +44,6 @@
       <textarea type="text" class="form-control" id="comments" [formControlName]="'comment'"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="prestationFormGroup.invalid">Submit</button>
   </form>
 </div>
