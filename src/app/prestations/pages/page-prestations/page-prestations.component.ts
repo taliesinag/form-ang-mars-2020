@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PrestationsService } from '../../services/prestations.service';
-import { Prestation } from 'src/app/shared/models/prestation.model';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { State } from 'src/app/shared/enums/state.enum';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Prestation } from 'src/app/shared/models/prestation.model';
+import { PrestationsService } from '../../services/prestations.service';
 
 @Component({
   selector: 'app-page-prestations',
@@ -31,7 +30,8 @@ export class PagePrestationsComponent implements OnInit {
   public externalLink: string;
   constructor(
     private prestationsService: PrestationsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -75,5 +75,8 @@ export class PagePrestationsComponent implements OnInit {
         this.collection$.next(datas);
       })
     });
+  }
+  public edit(prestation: Prestation) {
+    this.router.navigate(['prestations','edit',prestation.id]);
   }
 }

@@ -34,7 +34,7 @@
     <div class="form-group">
       <label for="State">State</label>
       <select id="State" class="form-control" [formControlName]="'state'">
-        <option  *ngFor="let state of states" [ngValue]="state">{{ state }}</option>
+        <option *ngFor="let state of states" [ngValue]="state">{{ state }}</option>
       </select>
       <div *ngIf="prestationFormGroup.get('state').invalid && prestationFormGroup.get('state').touched" class="alert alert-danger">Champ invalide</div>
     </div>

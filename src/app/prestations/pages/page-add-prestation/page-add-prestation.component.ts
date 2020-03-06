@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Prestation } from 'src/app/shared/models/prestation.model';
 import { PrestationsService } from '../../services/prestations.service';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-add-prestation',

@@ -15,7 +15,7 @@
 
         <!-- Du coup on utilise le pipe async qui va nous retourner le flux de données, fait le subscribe() et le unsubscribe()
           ce qui va permettre de limiter le changes detection -->
-    <tr *ngFor="let prestation of collection$ | async as collection">
+    <tr (click)="edit(prestation)" *ngFor="let prestation of collection$ | async as collection">
       <!-- <td>{{ collection | json }}</td> -->
       <td>{{ prestation.typePresta }}</td>
       <td>{{ prestation.client }}</td>
@@ -27,12 +27,13 @@
       <!-- <td>{{ prestation | doFunction : 'totalHt' | currency : 'EUR' }}</td>
       <td>{{ prestation | doFunction : 'totalTtc' | currency : 'EUR' }}</td> -->
       <td [appState]="prestation.state">
-        <select (change)="changeState($event, prestation)">
-          <option *ngFor="let state of states" [value]="state" [selected]="state === prestation.state">{{ state }}</option>
+        <select (click)="$event.stopPropagation()" (change)="changeState($event, prestation)">
+          <option (click)="$event.stopPropagation()" *ngFor="let state of states" [value]="state" [selected]="state === prestation.state">{{ state }}</option>
         </select>
       </td>
       <td>
-        <app-trash-icon (click)="delete(prestation)"></app-trash-icon>
+        <!-- <app-trash-icon (click)="$event.stopPropagation()" (sousclick)="delete(prestation)"></app-trash-icon> -->
+        <app-font-awesome-icons (click)="$event.stopPropagation()" (takeTheClick)="delete(prestation)" icon="trash"></app-font-awesome-icons>
       </td>
     </tr>
   </app-tableau-light>

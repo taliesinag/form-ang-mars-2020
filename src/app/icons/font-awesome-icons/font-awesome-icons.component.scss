@@ -1,0 +1,9 @@
+@import "theme";
+@import "layout";/// Description design of user interface
+
+fa-icon {
+  font-size: $fa-icons-fz;
+  color: $fa-icons-color;
+  margin-right: 5px;
+  cursor: pointer;
+}

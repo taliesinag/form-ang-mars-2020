@@ -18,16 +18,6 @@
   },
   "prestations": [
     {
-      "id": 1,
-      "typePresta": "Coaching",
-      "client": "Modis",
-      "tjmHt": 1200,
-      "nbJours": 10,
-      "tva": 20,
-      "state": "Annulé",
-      "comment": "Merci Modis pour les 1.2k jour"
-    },
-    {
       "id": 2,
       "typePresta": "Coaching",
       "client": "Capgemini",
@@ -38,14 +28,24 @@
       "comment": "Merci Capgemini pour les 1.2k jour"
     },
     {
-      "typePresta": "Conseil",
+      "id": 3,
+      "typePresta": "Prestation",
+      "client": "Cap Gemini",
+      "tjmHt": 2000,
+      "nbJours": 25,
+      "tva": 20,
+      "state": "Confirmé",
+      "comment": null
+    },
+    {
+      "id": 4,
+      "typePresta": "Formation",
       "client": "Atos",
       "tjmHt": 1499,
-      "nbJours": 1,
+      "nbJours": 5,
       "tva": 20,
       "state": "Option",
-      "comment": "Comment",
-      "id": 3
+      "comment": null
     }
   ],
   "clients": [

@@ -47,5 +47,7 @@ export class PrestationsService {
     return this.http.delete(`${environment.urlApî}prestations/${item.id}`);
   }
   // get item by id from collection
-
+  public getItemById(id: number) {
+    return this.http.get(`${environment.urlApî}prestations/${id}`);
+  }
 }

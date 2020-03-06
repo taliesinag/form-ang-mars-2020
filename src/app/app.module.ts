@@ -1,15 +1,14 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+/* Import pour la local */
+import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import localeFr from '@angular/common/locales/fr';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UiModule } from './ui/ui.module';
 import { LoginModule } from './login/login.module';
-import { HttpClientModule } from '@angular/common/http';
-/* Import pour la local */
-import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
+import { UiModule } from './ui/ui.module';
 
 // the second parameter 'fr-FR' is optional
 registerLocaleData(localeFr, 'fr-FR');
@@ -24,7 +23,6 @@ registerLocaleData(localeFr, 'fr-FR');
     AppRoutingModule,
     UiModule,
     NgbModule,
-    FontAwesomeModule,
     HttpClientModule
   ],
   providers: [

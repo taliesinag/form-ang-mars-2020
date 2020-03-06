@@ -1,0 +1,5 @@
+<div [ngSwitch]="icon">
+  <fa-icon *ngSwitchCase="Icons.trash" (click)="onClick()" [icon]="faTrashAlt"></fa-icon>
+  <fa-icon *ngSwitchCase="Icons.bars" (click)="onClick()" [icon]="faBars"></fa-icon>
+  <fa-icon *ngSwitchCase="Icons.edit" (click)="onClick()" [icon]="faEdit"></fa-icon>
+</div>

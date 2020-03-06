@@ -19,6 +19,7 @@ export class FormPrestationComponent implements OnInit {
 
   ngOnInit(): void {
     this.prestationFormGroup = this.formBuilder.group({
+      id: [this.prestation.id],
       typePresta: [this.prestation.typePresta, [Validators.required]],
       client: [this.prestation.client, [Validators.required]],
       tjmHt: [this.prestation.tjmHt, [Validators.required, Validators.min(1000)]],
